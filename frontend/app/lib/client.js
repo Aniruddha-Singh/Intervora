@@ -1,4 +1,4 @@
-export const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://127.0.0.1:8000";
+export const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://backend-intervora.onrender.com";
 export const TOKEN_STORAGE_KEY = "interview-pro-token";
 export const USER_STORAGE_KEY = "interview-pro-user";
 export const INTERVIEW_STORAGE_KEY = "interview-pro-active-interview";
