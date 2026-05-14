@@ -1,0 +1,33 @@
+# Python virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+.env.local
+
+# Node modules
+node_modules/
+
+# Next.js build
+.next/
+
+# Logs
+*.log
+
+# Database
+*.db
+
+# Model weights
+*.pt
+*.caffemodel
+
+# VS Code
+.vscode/
+
+# OS files
+Thumbs.db
+.DS_Store

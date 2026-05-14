@@ -1,0 +1,12 @@
+﻿streamlit
+openai
+python-dotenv
+gTTS
+audio-recorder-streamlit
+qrcode
+Pillow
+gspread
+oauth2client
+streamlit-camera-input-live
+opencv-python-headless
+numpy

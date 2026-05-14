@@ -1,0 +1,835 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b1020;
+  --bg-2: #10172b;
+  --panel: rgba(18, 24, 39, 0.88);
+  --panel-strong: rgba(15, 20, 33, 0.96);
+  --panel-soft: rgba(29, 38, 60, 0.78);
+  --border: rgba(148, 163, 184, 0.16);
+  --border-strong: rgba(125, 211, 252, 0.22);
+  --text: #f5f7fb;
+  --muted: #98a2b3;
+  --blue: #66b7ff;
+  --blue-soft: rgba(102, 183, 255, 0.16);
+  --green: #58c76f;
+  --green-soft: rgba(88, 199, 111, 0.16);
+  --amber: #f7b955;
+  --amber-soft: rgba(247, 185, 85, 0.17);
+  --red: #ff7979;
+  --red-soft: rgba(255, 121, 121, 0.14);
+  --shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(88, 120, 255, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent 24%),
+    linear-gradient(180deg, #11182b 0%, #0b1020 54%, #0a0f1b 100%);
+  overflow: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.routeLoaderShell,
+.authPageShell {
+  min-height: 100vh;
+  padding: 32px;
+}
+
+.routeLoaderShell {
+  display: grid;
+  place-items: center;
+}
+
+.routeLoaderCard,
+.authCard,
+.authHeroPanel,
+.heroPanel,
+.workspaceCard,
+.monitorCard,
+.answerPanel,
+.messageCard,
+.dashboardPanel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.routeLoaderCard {
+  width: min(520px, 100%);
+  padding: 36px;
+  text-align: center;
+}
+
+.routeLoaderCard h1,
+.authHeroPanel h1,
+.authCard h2,
+.heroPanel h1,
+.workspaceCard h2,
+.pageHeader h1 {
+  margin: 14px 0 10px;
+  line-height: 1.04;
+}
+
+.routeLoaderCard h1,
+.authCard h2,
+.workspaceCard h2 {
+  font-size: 2.3rem;
+}
+
+.routeLoaderCard p,
+.authCard p,
+.authHeroPanel p,
+.heroPanel p,
+.panelHeaderText,
+.historyMeta,
+.historyEmpty,
+.monitorCard p,
+.statusDetail,
+.eventsBlock p,
+.inputHint,
+.loadingBar,
+.monitorPlaceholder,
+.pauseText,
+.errorText {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.routeLoaderButton {
+  margin-top: 18px;
+}
+
+.authPageShell {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.authHeroPanel,
+.authCard {
+  padding: 38px;
+}
+
+.authHeroPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  background:
+    linear-gradient(165deg, rgba(18, 26, 44, 0.96), rgba(11, 16, 30, 0.96)),
+    radial-gradient(circle at 20% 20%, rgba(88, 120, 255, 0.2), transparent 40%);
+}
+
+.authHeroPanel h1 {
+  font-size: clamp(3rem, 4vw, 5rem);
+  max-width: 12ch;
+}
+
+.authCardWide {
+  align-self: center;
+  width: min(680px, 100%);
+  justify-self: end;
+}
+
+.sectionBadge,
+.authEyebrow,
+.userRoleTag,
+.historyStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sectionBadge,
+.authEyebrow {
+  background: var(--blue-soft);
+  color: #d8ecff;
+  border: 1px solid rgba(102, 183, 255, 0.2);
+}
+
+.authTabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 26px 0 22px;
+}
+
+.tabButton,
+.ghostButton,
+.secondaryGhostButton,
+.navCardButton {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+}
+
+.tabButton {
+  padding: 14px 16px;
+}
+
+.tabButton.active {
+  background: rgba(102, 183, 255, 0.14);
+  border-color: rgba(102, 183, 255, 0.4);
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.authInput,
+.roleInput,
+.answerPanel textarea {
+  width: 100%;
+  background: rgba(34, 42, 63, 0.9);
+  color: var(--text);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 16px;
+  padding: 16px 18px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.authInput:focus,
+.roleInput:focus,
+.answerPanel textarea:focus {
+  outline: none;
+  border-color: rgba(102, 183, 255, 0.48);
+  box-shadow: 0 0 0 4px rgba(102, 183, 255, 0.12);
+}
+
+.heroFeatureGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.heroFeatureCard {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.heroFeatureCard strong,
+.dashboardListTop strong,
+.historyTop strong,
+.navCard strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.heroFeatureCard span,
+.navCard span {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.errorBanner {
+  margin: 16px 0;
+  padding: 14px 16px;
+  border-radius: 16px;
+  color: #ffd5d5;
+  background: var(--red-soft);
+  border: 1px solid rgba(255, 121, 121, 0.22);
+}
+
+.primaryButton,
+.secondaryButton,
+.micButton,
+.secondaryGhostButton {
+  border: 0;
+  border-radius: 16px;
+  padding: 15px 18px;
+  font-weight: 700;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover,
+.micButton:hover,
+.secondaryGhostButton:hover,
+.ghostButton:hover,
+.navCardButton:hover,
+.tabButton:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #65cb72, #49b75e);
+  color: #08110b;
+}
+
+.secondaryButton {
+  margin-top: 14px;
+  background: linear-gradient(135deg, rgba(102, 183, 255, 0.22), rgba(82, 132, 255, 0.24));
+  color: var(--text);
+  border: 1px solid rgba(102, 183, 255, 0.2);
+}
+
+.secondaryGhostButton {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.authSubmit {
+  margin-top: 6px;
+}
+
+.appShell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  overflow: hidden;
+}
+
+.pageShell {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 320px 1.65fr 1fr;
+  overflow: hidden;
+}
+
+.shellSidebar,
+.sidebar,
+.contentColumn,
+.mainColumn,
+.monitorColumn {
+  padding: 28px;
+}
+
+.shellSidebar,
+.sidebar {
+  height: 100vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-right: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(14, 20, 33, 0.94), rgba(10, 15, 26, 0.98));
+}
+
+.contentColumn,
+.mainColumn,
+.monitorColumn {
+  height: 100vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.brandBlock {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.brandBlockCompact {
+  margin-bottom: 20px;
+}
+
+.brandMark {
+  width: 46px;
+  height: 46px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: #07111f;
+  background: linear-gradient(135deg, #87d5ff, #57aeff);
+}
+
+.brandName {
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.brandSubtext {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.userCard {
+  padding: 22px;
+  border-radius: 22px;
+  background: linear-gradient(160deg, rgba(32, 51, 78, 0.94), rgba(17, 23, 37, 0.96));
+  border: 1px solid rgba(102, 183, 255, 0.18);
+}
+
+.userCard h2 {
+  margin: 12px 0 6px;
+  font-size: 1.7rem;
+}
+
+.userCard p {
+  margin: 0 0 16px;
+  color: #d8e1f3;
+}
+
+.userRoleTag {
+  background: rgba(255, 255, 255, 0.12);
+  color: #f0f7ff;
+}
+
+.ghostButton {
+  width: 100%;
+  padding: 12px 14px;
+}
+
+.sidebarSection {
+  margin-top: 22px;
+}
+
+.sidebarSection h3 {
+  margin: 0 0 14px;
+  font-size: 1.02rem;
+}
+
+.navCard {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid var(--border);
+}
+
+.navCard.active {
+  border-color: var(--border-strong);
+  background: rgba(102, 183, 255, 0.1);
+}
+
+.navCardButton {
+  width: 100%;
+  padding: 14px 16px;
+  text-align: left;
+  margin-top: 12px;
+}
+
+.historyList,
+.dashboardList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.historyCard,
+.dashboardListItem {
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+}
+
+.adminCard {
+  background: rgba(102, 183, 255, 0.08);
+}
+
+.historyTop,
+.dashboardListTop,
+.pageHeaderWide {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.historyTop,
+.dashboardListTop {
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.historyStatus {
+  padding: 5px 10px;
+  letter-spacing: 0.04em;
+}
+
+.historyStatus.done {
+  background: var(--green-soft);
+  color: #bff8ca;
+}
+
+.historyStatus.live {
+  background: var(--amber-soft);
+  color: #ffe1a8;
+}
+
+.heroPanel,
+.workspaceCard,
+.pageHeader {
+  padding: 28px;
+  margin-bottom: 22px;
+}
+
+.heroPanel {
+  background:
+    linear-gradient(140deg, rgba(17, 27, 46, 0.96), rgba(13, 18, 32, 0.96)),
+    radial-gradient(circle at top left, rgba(102, 183, 255, 0.12), transparent 36%);
+}
+
+.heroPanel h1,
+.pageHeader h1 {
+  font-size: clamp(2.6rem, 4vw, 4.2rem);
+  max-width: 12ch;
+}
+
+.workspaceCard,
+.dashboardPanel,
+.monitorCard,
+.answerPanel,
+.messageCard,
+.pageHeader {
+  background: var(--panel-strong);
+}
+
+.fieldLabel {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #dce7f5;
+}
+
+.toggleCard {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  margin: 18px 0 26px;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.ctaButton {
+  flex: 1;
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-end;
+  margin-bottom: 18px;
+}
+
+.panelHeaderText {
+  max-width: 420px;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.dashboardMetric {
+  padding: 18px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(34, 45, 68, 0.82), rgba(18, 24, 39, 0.96));
+  border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.dashboardMetric span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.dashboardMetric strong {
+  font-size: 2rem;
+}
+
+.dashboardColumns {
+  display: grid;
+  grid-template-columns: 1.05fr 1.35fr;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.candidateColumns {
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.dashboardCard {
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.dashboardCard h3 {
+  margin: 0 0 16px;
+}
+
+.compactList {
+  margin-top: 18px;
+}
+
+.roleCard {
+  background: rgba(102, 183, 255, 0.12);
+  color: #dcebff;
+  border-radius: 16px;
+  border: 1px solid rgba(102, 183, 255, 0.2);
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.flagsText {
+  margin-bottom: 20px;
+}
+
+.pageHeaderWide {
+  display: block;
+}
+
+.chatStack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 0 20px;
+}
+
+.messageCard {
+  padding: 20px;
+}
+
+.messageCard.user {
+  border-color: rgba(102, 183, 255, 0.22);
+}
+
+.messageRole {
+  font-size: 0.88rem;
+  color: #ffd188;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.messageBody {
+  white-space: pre-wrap;
+  line-height: 1.7;
+}
+
+.answerPanel {
+  padding: 20px;
+}
+
+.answerActions {
+  display: flex;
+  gap: 14px;
+}
+
+.micButton {
+  background: linear-gradient(135deg, rgba(80, 118, 185, 0.95), rgba(52, 76, 126, 0.95));
+  color: white;
+}
+
+.reportBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reportTitle {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.reportScore {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffd486;
+}
+
+.reportHeading {
+  margin-top: 10px;
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.reportBullet,
+.reportText {
+  line-height: 1.7;
+}
+
+.monitorCard {
+  padding: 24px;
+}
+
+.monitorCard h2 {
+  margin-top: 12px;
+  font-size: 2rem;
+}
+
+.videoShell {
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: black;
+  aspect-ratio: 16 / 9;
+  margin: 16px 0;
+}
+
+.videoFrame {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.statusPill {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.statusClear {
+  background: var(--green-soft);
+  color: #bff8ca;
+}
+
+.statusWarn {
+  background: var(--amber-soft);
+  color: #ffe1a8;
+}
+
+.statusDanger {
+  background: var(--red-soft);
+  color: #ffd0d0;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.metricCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.metricCard span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.metricCard strong {
+  font-size: 1.7rem;
+}
+
+.eventsBlock {
+  margin-top: 18px;
+}
+
+@media (max-width: 1200px) {
+  body {
+    overflow: auto;
+  }
+
+  .authPageShell,
+  .appShell,
+  .pageShell,
+  .dashboardColumns,
+  .dashboardGrid,
+  .heroFeatureGrid,
+  .ctaRow,
+  .answerActions {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .authCardWide {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .authHeroPanel {
+    min-height: auto;
+  }
+
+  .pageShell,
+  .appShell {
+    height: auto;
+    overflow: visible;
+  }
+
+  .shellSidebar,
+  .sidebar,
+  .contentColumn,
+  .mainColumn,
+  .monitorColumn {
+    height: auto;
+    overflow: visible;
+  }
+
+  .shellSidebar,
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .panelHeader,
+  .historyTop,
+  .dashboardListTop {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .heroPanel h1,
+  .pageHeader h1,
+  .authHeroPanel h1 {
+    max-width: none;
+  }
+}
